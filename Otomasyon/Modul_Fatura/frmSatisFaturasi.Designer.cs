@@ -434,6 +434,7 @@
             this.btnKaydet.Size = new System.Drawing.Size(75, 31);
             this.btnKaydet.TabIndex = 3;
             this.btnKaydet.Text = "Kaydet";
+            this.btnKaydet.Click += new System.EventHandler(this.BtnKaydet_Click);
             // 
             // btnSil
             // 

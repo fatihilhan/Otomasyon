@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace Otomasyon.Modul_Stok
 {
@@ -24,7 +17,7 @@ namespace Otomasyon.Modul_Stok
         OpenFileDialog Dosya = new OpenFileDialog();
         int GrupID = -1;
         int StokID = -1;
-        
+
         public frmStokKarti()
         {
             InitializeComponent();

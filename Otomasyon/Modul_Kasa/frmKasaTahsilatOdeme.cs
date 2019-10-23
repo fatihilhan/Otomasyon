@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace Otomasyon.Modul_Kasa
 {
@@ -174,7 +167,7 @@ namespace Otomasyon.Modul_Kasa
                 Mesajlar.Guncelle(true);
 
                 // Cari Hareket Kısmı
-                Fonksiyonlar.TBL_CARIHAREKETLERI CariHareket = DB.TBL_CARIHAREKETLERI.First(s => s.ID==CariHareketID);
+                Fonksiyonlar.TBL_CARIHAREKETLERI CariHareket = DB.TBL_CARIHAREKETLERI.First(s => s.ID == CariHareketID);
                 CariHareket.ACIKLAMA = txtBelgeNo.Text + " belge numaralı " + txtIslemTuru.SelectedItem.ToString() + " işlemi";
                 if (txtIslemTuru.SelectedIndex == 0) CariHareket.ALACAK = decimal.Parse(txtTutar.Text);
                 if (txtIslemTuru.SelectedIndex == 1) CariHareket.BORC = decimal.Parse(txtTutar.Text);

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Otomasyon.Fonksiyonlar
 {
@@ -22,7 +19,7 @@ namespace Otomasyon.Fonksiyonlar
                 string Num = Numara.ToString().PadLeft(7, '0');
                 return Num;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return "0000001";
             }

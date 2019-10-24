@@ -320,4 +320,20 @@
       <Column Name="EDITDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.VW_KALEMLER" Member="VW_KALEMLER">
+    <Type Name="VW_KALEMLER">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="STOKID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FATURAID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IRSALIYEID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STOKKODU" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="STOKADI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="STOKBARKOD" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="STOKBIRIM" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="BIRIMFIYAT" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="KDV" Type="System.Decimal" DbType="Decimal(8,2)" CanBeNull="true" />
+      <Column Name="MIKTAR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TOPLAM" Type="System.Decimal" DbType="Decimal(29,2)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

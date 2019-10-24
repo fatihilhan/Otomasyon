@@ -319,6 +319,7 @@
             this.barBtnSatisIadeFaturasi.Id = 19;
             this.barBtnSatisIadeFaturasi.ImageOptions.LargeImage = global::Otomasyon.Properties.Resources.Fatura_SatisIade32x32;
             this.barBtnSatisIadeFaturasi.Name = "barBtnSatisIadeFaturasi";
+            this.barBtnSatisIadeFaturasi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarBtnSatisIadeFaturasi_ItemClick);
             // 
             // barBtnAlisFaturasi
             // 

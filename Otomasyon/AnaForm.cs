@@ -248,5 +248,10 @@ namespace Otomasyon
         {
             Formlar.Fatura();
         }
+
+        private void BarBtnSatisIadeFaturasi_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Formlar.FaturaListesi();
+        }
     }
 }

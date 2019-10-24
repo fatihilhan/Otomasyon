@@ -122,5 +122,11 @@
         <elementListCompartment Id="a255f41b-3d17-410f-aecc-d2b1d20186ea" absoluteBounds="1.0149999999999997, 4.085, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="5f97ff67-0570-47ed-be51-f528cebb29e7" isExpanded="false" absoluteBounds="1, 4.625, 2, 0.45">
+      <DataClassMoniker Name="/DatabaseDataContext/VW_KALEMLER" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50bb2991-1a0f-42d8-8331-8659aa86cb7e" absoluteBounds="1.0149999999999997, 5.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

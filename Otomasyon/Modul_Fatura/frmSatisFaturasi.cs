@@ -44,26 +44,85 @@ namespace Otomasyon.Modul_Fatura
             txtKDV.Text = "0.00";
             txtOdemeYeri.SelectedIndex = 0;
             AnaForm.Aktarma = -1;
-            for (int i = 0; i < gridView1.RowCount+1; i++)
+            for (int i = 0; i < gridView1.RowCount + 1; i++)
             {
                 gridView1.DeleteRow(0);
             }
         }
 
-        public frmSatisFaturasi()
+        void FaturaGetir()
         {
-            InitializeComponent();
+            try
+            {
+                Fonksiyonlar.TBL_FATURALAR Fatura = DB.TBL_FATURALAR.First(s => s.ID == FaturaID);
+                txtAciklama.Text = Fatura.ACIKLAMA;
+                txtFaturaNo.Text = Fatura.FATURANO;
+                if (Fatura.ODEMEYERIID > 0) //Kapalı fatura ise
+                {
+                    txtFaturaTuru.SelectedIndex = 1; //Fatura türünü kapalı faturaya getiriyoruz.
+
+                    if (Fatura.ODEMEYERI == "Kasa")
+                    {
+                        txtOdemeYeri.SelectedIndex = 0;
+                        OdemeYeri = Fatura.ODEMEYERI;
+                        txtKasaAdi.Text = DB.TBL_KASALAR.First(s => s.ID == Fatura.ODEMEYERIID.Value).KASAADI;
+                        txtKasaKodu.Text = DB.TBL_KASALAR.First(s => s.ID == Fatura.ODEMEYERIID.Value).KASAKODU;
+                    }
+                    else if (Fatura.ODEMEYERI == "Banka")
+                    {
+                        txtOdemeYeri.SelectedIndex = 1;
+                        OdemeYeri = Fatura.ODEMEYERI;
+                        txtHesapAdi.Text = DB.TBL_BANKALAR.First(s => s.ID == Fatura.ODEMEYERIID.Value).HESAPADI;
+                        txtHesapNo.Text = DB.TBL_BANKALAR.First(s => s.ID == Fatura.ODEMEYERIID.Value).HESAPNO;
+                    }
+                    OdemeID = Fatura.ODEMEYERIID.Value;
+                }
+                else if (Fatura.ODEMEYERIID < 1) txtFaturaTuru.SelectedIndex = 0;
+                txtIrsaliyeNo.Text = DB.TBL_IRSALIYELER.First(s => s.ID == Fatura.IRSALIYEID).IRSALIYENO;
+                txtIrsaliyeTarihi.EditValue = DB.TBL_IRSALIYELER.First(s => s.ID == Fatura.IRSALIYEID).TARIHI.Value.ToShortDateString();
+                txtCariAdi.Text = DB.TBL_CARILER.First(s => s.CARIKODU == Fatura.CARIKODU).CARIADI;
+                txtCariKodu.Text = Fatura.CARIKODU;
+                txtFaturaTarihi.EditValue = Fatura.TARIHI.Value.ToShortDateString();
+                var srg = from s in DB.VW_KALEMLER
+                          where s.FATURAID == FaturaID
+                          select s;
+                foreach(Fonksiyonlar.VW_KALEMLER k in srg)
+                {
+                    gridView1.AddNewRow();
+                    gridView1.SetFocusedRowCellValue("MIKTAR", k.MIKTAR);
+                    gridView1.SetFocusedRowCellValue("BIRIMFIYAT", k.BIRIMFIYAT);
+                    gridView1.SetFocusedRowCellValue("KDV", k.KDV);
+                    gridView1.SetFocusedRowCellValue("BARKOD", k.STOKBARKOD);
+                    gridView1.SetFocusedRowCellValue("STOKKODU", k.STOKKODU);
+                    gridView1.SetFocusedRowCellValue("STOKADI", k.STOKADI);
+                    gridView1.SetFocusedRowCellValue("BIRIM", k.STOKBIRIM);
+                    gridView1.UpdateCurrentRow();
+                }
+            }
+            catch (Exception ex)
+            {
+                Mesajlar.Hata(ex);
+            }
         }
 
-        public frmSatisFaturasi(bool Edit, int ID)
+        public frmSatisFaturasi(bool Ac, int ID, bool Irsaliye)
         {
             InitializeComponent();
+            Edit = Ac;
+            if (Irsaliye) IrsaliyeID = ID;
+            else FaturaID = ID;
+            IrsaliyeAc = Irsaliye;
+            this.Shown += FrmSatisFaturasi_Shown; //bu event özellikleri için fatura 3. video 33:00 a bakabilirsin.
         }
 
-        private void BtnStokSec_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void FrmSatisFaturasi_Shown(object sender, EventArgs e) //bu event özellikleri için fatura 3. video 33:00 a bakabilirsin.
         {
-            int StokID = Formlar.StokListesi(true);
-            if (StokID > 0)
+            if (Edit) FaturaGetir();
+        }
+
+        void StokGetir(int StokID)
+        {
+            try
             {
                 Fonksiyonlar.TBL_STOKLAR Stok = DB.TBL_STOKLAR.First(s => s.ID == StokID);
                 gridView1.AddNewRow();
@@ -74,6 +133,20 @@ namespace Otomasyon.Modul_Fatura
                 gridView1.SetFocusedRowCellValue("BIRIM", Stok.STOKBIRIM);
                 gridView1.SetFocusedRowCellValue("BIRIMFIYAT", Stok.STOKSATISFIYAT);
                 gridView1.SetFocusedRowCellValue("KDV", Stok.STOKSATISKDV);
+
+            }
+            catch (Exception ex)
+            {
+                Mesajlar.Hata(ex);
+            }
+        }
+
+        private void BtnStokSec_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            int StokID = Formlar.StokListesi(true);
+            if (StokID > 0)
+            {
+                StokGetir(StokID);
             }
             AnaForm.Aktarma = -1;
         }
@@ -226,6 +299,7 @@ namespace Otomasyon.Modul_Fatura
                     DB.TBL_IRSALIYELER.InsertOnSubmit(Irsaliye);
                     DB.SubmitChanges();
                     IrsaliyeID = Irsaliye.ID;
+                    Fatura.IRSALIYEID = IrsaliyeID;
                 }
 
                 Fonksiyonlar.TBL_STOKHAREKETLERI[] StokHareketi = new Fonksiyonlar.TBL_STOKHAREKETLERI[gridView1.RowCount];

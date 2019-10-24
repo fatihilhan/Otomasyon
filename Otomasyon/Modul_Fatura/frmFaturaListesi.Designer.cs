@@ -32,31 +32,31 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.FATURANO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.FATURATURU = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CARIKODU = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Liste = new DevExpress.XtraGrid.GridControl();
-            this.txtStokAdi = new DevExpress.XtraEditors.TextEdit();
+            this.txtFaturaNo = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAra = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.txtFaturaTuru = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtStokBarkod = new DevExpress.XtraEditors.DateEdit();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.STOKKODU = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.STOKADI = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.STOKBARKOD = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.txtStokKodu = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.txtStokBarkod = new DevExpress.XtraEditors.DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Liste)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStokAdi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFaturaNo.Properties)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFaturaTuru.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStokBarkod.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStokBarkod.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStokKodu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStokBarkod.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStokBarkod.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // splitterControl1
@@ -87,11 +87,54 @@
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.ID,
-            this.STOKKODU,
-            this.STOKADI,
-            this.STOKBARKOD});
+            this.FATURANO,
+            this.FATURATURU,
+            this.CARIKODU});
             this.gridView1.GridControl = this.Liste;
             this.gridView1.Name = "gridView1";
+            this.gridView1.DoubleClick += new System.EventHandler(this.GridView1_DoubleClick);
+            // 
+            // ID
+            // 
+            this.ID.Caption = "ID";
+            this.ID.FieldName = "ID";
+            this.ID.Name = "ID";
+            // 
+            // FATURANO
+            // 
+            this.FATURANO.Caption = "Fatura Numarası";
+            this.FATURANO.FieldName = "FATURANO";
+            this.FATURANO.Name = "FATURANO";
+            this.FATURANO.OptionsColumn.AllowEdit = false;
+            this.FATURANO.OptionsColumn.AllowFocus = false;
+            this.FATURANO.OptionsColumn.FixedWidth = true;
+            this.FATURANO.Visible = true;
+            this.FATURANO.VisibleIndex = 0;
+            this.FATURANO.Width = 40;
+            // 
+            // FATURATURU
+            // 
+            this.FATURATURU.Caption = "Fatura Türü";
+            this.FATURATURU.FieldName = "FATURATURU";
+            this.FATURATURU.Name = "FATURATURU";
+            this.FATURATURU.OptionsColumn.AllowEdit = false;
+            this.FATURATURU.OptionsColumn.AllowFocus = false;
+            this.FATURATURU.OptionsColumn.FixedWidth = true;
+            this.FATURATURU.Visible = true;
+            this.FATURATURU.VisibleIndex = 1;
+            this.FATURATURU.Width = 90;
+            // 
+            // CARIKODU
+            // 
+            this.CARIKODU.Caption = "Cari Kodu";
+            this.CARIKODU.FieldName = "CARIKODU";
+            this.CARIKODU.Name = "CARIKODU";
+            this.CARIKODU.OptionsColumn.AllowEdit = false;
+            this.CARIKODU.OptionsColumn.AllowFocus = false;
+            this.CARIKODU.OptionsColumn.FixedWidth = true;
+            this.CARIKODU.Visible = true;
+            this.CARIKODU.VisibleIndex = 2;
+            this.CARIKODU.Width = 50;
             // 
             // Liste
             // 
@@ -104,26 +147,45 @@
             this.Liste.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
-            // txtStokAdi
+            // txtFaturaNo
             // 
-            this.txtStokAdi.Location = new System.Drawing.Point(11, 83);
-            this.txtStokAdi.Name = "txtStokAdi";
-            this.txtStokAdi.Size = new System.Drawing.Size(168, 20);
-            this.txtStokAdi.TabIndex = 3;
+            this.txtFaturaNo.Location = new System.Drawing.Point(11, 83);
+            this.txtFaturaNo.Name = "txtFaturaNo";
+            this.txtFaturaNo.Size = new System.Drawing.Size(168, 20);
+            this.txtFaturaNo.TabIndex = 3;
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.labelControl1);
             this.xtraTabPage1.Controls.Add(this.simpleButton2);
-            this.xtraTabPage1.Controls.Add(this.simpleButton1);
+            this.xtraTabPage1.Controls.Add(this.btnAra);
             this.xtraTabPage1.Controls.Add(this.labelControl2);
-            this.xtraTabPage1.Controls.Add(this.txtStokAdi);
+            this.xtraTabPage1.Controls.Add(this.txtFaturaNo);
             this.xtraTabPage1.Controls.Add(this.labelControl3);
-            this.xtraTabPage1.Controls.Add(this.txtStokKodu);
+            this.xtraTabPage1.Controls.Add(this.txtFaturaTuru);
             this.xtraTabPage1.Controls.Add(this.txtStokBarkod);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(191, 581);
             this.xtraTabPage1.Text = "Arama";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.ImageOptions.Image = global::Otomasyon.Properties.Resources.Sil32x32;
+            this.simpleButton2.Location = new System.Drawing.Point(98, 154);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(81, 42);
+            this.simpleButton2.TabIndex = 7;
+            this.simpleButton2.Text = "Temizle";
+            // 
+            // btnAra
+            // 
+            this.btnAra.ImageOptions.Image = global::Otomasyon.Properties.Resources.Ara32x32;
+            this.btnAra.Location = new System.Drawing.Point(11, 154);
+            this.btnAra.Name = "btnAra";
+            this.btnAra.Size = new System.Drawing.Size(81, 42);
+            this.btnAra.TabIndex = 6;
+            this.btnAra.Text = "Ara";
+            this.btnAra.Click += new System.EventHandler(this.BtnAra_Click);
             // 
             // labelControl3
             // 
@@ -132,6 +194,41 @@
             this.labelControl3.Size = new System.Drawing.Size(24, 13);
             this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "Tarih";
+            // 
+            // txtFaturaTuru
+            // 
+            this.txtFaturaTuru.EditValue = "Satış Faturası";
+            this.txtFaturaTuru.Location = new System.Drawing.Point(11, 38);
+            this.txtFaturaTuru.Name = "txtFaturaTuru";
+            this.txtFaturaTuru.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtFaturaTuru.Properties.Items.AddRange(new object[] {
+            "Satış Faturası",
+            "Satış İade Faturası",
+            "Alış Faturası",
+            "Alış İade Faturası"});
+            this.txtFaturaTuru.Properties.ReadOnly = true;
+            this.txtFaturaTuru.Size = new System.Drawing.Size(168, 20);
+            this.txtFaturaTuru.TabIndex = 1;
+            this.txtFaturaTuru.SelectedIndexChanged += new System.EventHandler(this.TxtFaturaTuru_SelectedIndexChanged);
+            // 
+            // txtStokBarkod
+            // 
+            this.txtStokBarkod.EditValue = null;
+            this.txtStokBarkod.Location = new System.Drawing.Point(11, 128);
+            this.txtStokBarkod.Name = "txtStokBarkod";
+            this.txtStokBarkod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtStokBarkod.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtStokBarkod.Properties.DisplayFormat.FormatString = "";
+            this.txtStokBarkod.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtStokBarkod.Properties.EditFormat.FormatString = "";
+            this.txtStokBarkod.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtStokBarkod.Properties.Mask.EditMask = "";
+            this.txtStokBarkod.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtStokBarkod.Size = new System.Drawing.Size(168, 20);
+            this.txtStokBarkod.TabIndex = 5;
             // 
             // xtraTabControl1
             // 
@@ -158,97 +255,6 @@
             this.splitContainerControl1.SplitterPosition = 197;
             this.splitContainerControl1.TabIndex = 1;
             // 
-            // simpleButton2
-            // 
-            this.simpleButton2.ImageOptions.Image = global::Otomasyon.Properties.Resources.Sil32x32;
-            this.simpleButton2.Location = new System.Drawing.Point(98, 154);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(81, 42);
-            this.simpleButton2.TabIndex = 7;
-            this.simpleButton2.Text = "Temizle";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.ImageOptions.Image = global::Otomasyon.Properties.Resources.Ara32x32;
-            this.simpleButton1.Location = new System.Drawing.Point(11, 154);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(81, 42);
-            this.simpleButton1.TabIndex = 6;
-            this.simpleButton1.Text = "Ara";
-            // 
-            // ID
-            // 
-            this.ID.Caption = "ID";
-            this.ID.FieldName = "ID";
-            this.ID.Name = "ID";
-            // 
-            // STOKKODU
-            // 
-            this.STOKKODU.Caption = "STOK KODU";
-            this.STOKKODU.FieldName = "STOKKODU";
-            this.STOKKODU.Name = "STOKKODU";
-            this.STOKKODU.OptionsColumn.AllowEdit = false;
-            this.STOKKODU.OptionsColumn.AllowFocus = false;
-            this.STOKKODU.OptionsColumn.FixedWidth = true;
-            this.STOKKODU.Visible = true;
-            this.STOKKODU.VisibleIndex = 0;
-            this.STOKKODU.Width = 40;
-            // 
-            // STOKADI
-            // 
-            this.STOKADI.Caption = "STOK ADI";
-            this.STOKADI.FieldName = "STOKADI";
-            this.STOKADI.Name = "STOKADI";
-            this.STOKADI.OptionsColumn.AllowEdit = false;
-            this.STOKADI.OptionsColumn.AllowFocus = false;
-            this.STOKADI.OptionsColumn.FixedWidth = true;
-            this.STOKADI.Visible = true;
-            this.STOKADI.VisibleIndex = 1;
-            this.STOKADI.Width = 90;
-            // 
-            // STOKBARKOD
-            // 
-            this.STOKBARKOD.Caption = "STOKBARKOD";
-            this.STOKBARKOD.FieldName = "STOKBARKOD";
-            this.STOKBARKOD.Name = "STOKBARKOD";
-            this.STOKBARKOD.OptionsColumn.AllowEdit = false;
-            this.STOKBARKOD.OptionsColumn.AllowFocus = false;
-            this.STOKBARKOD.OptionsColumn.FixedWidth = true;
-            this.STOKBARKOD.Visible = true;
-            this.STOKBARKOD.VisibleIndex = 2;
-            this.STOKBARKOD.Width = 50;
-            // 
-            // txtStokKodu
-            // 
-            this.txtStokKodu.EditValue = "Satış Faturası";
-            this.txtStokKodu.Location = new System.Drawing.Point(11, 38);
-            this.txtStokKodu.Name = "txtStokKodu";
-            this.txtStokKodu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtStokKodu.Properties.Items.AddRange(new object[] {
-            "Satış Faturası",
-            "Satış İade Faturası",
-            "Alış Faturası",
-            "Alış İade Faturası"});
-            this.txtStokKodu.Size = new System.Drawing.Size(168, 20);
-            this.txtStokKodu.TabIndex = 1;
-            // 
-            // txtStokBarkod
-            // 
-            this.txtStokBarkod.EditValue = null;
-            this.txtStokBarkod.Location = new System.Drawing.Point(11, 128);
-            this.txtStokBarkod.Name = "txtStokBarkod";
-            this.txtStokBarkod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtStokBarkod.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtStokBarkod.Properties.DisplayFormat.FormatString = "";
-            this.txtStokBarkod.Properties.EditFormat.FormatString = "";
-            this.txtStokBarkod.Properties.Mask.EditMask = "";
-            this.txtStokBarkod.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtStokBarkod.Size = new System.Drawing.Size(168, 20);
-            this.txtStokBarkod.TabIndex = 5;
-            // 
             // frmFaturaListesi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,18 +263,19 @@
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "frmFaturaListesi";
             this.Text = "frmFaturaListesi";
+            this.Load += new System.EventHandler(this.FrmFaturaListesi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Liste)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStokAdi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFaturaNo.Properties)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFaturaTuru.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStokBarkod.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStokBarkod.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtStokKodu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStokBarkod.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStokBarkod.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -276,22 +283,22 @@
         #endregion
 
         private DevExpress.XtraEditors.SplitterControl splitterControl1;
-        private DevExpress.XtraGrid.Columns.GridColumn STOKADI;
-        private DevExpress.XtraGrid.Columns.GridColumn STOKKODU;
+        private DevExpress.XtraGrid.Columns.GridColumn FATURATURU;
+        private DevExpress.XtraGrid.Columns.GridColumn FATURANO;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnAra;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraGrid.Columns.GridColumn ID;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn STOKBARKOD;
+        private DevExpress.XtraGrid.Columns.GridColumn CARIKODU;
         private DevExpress.XtraGrid.GridControl Liste;
-        private DevExpress.XtraEditors.TextEdit txtStokAdi;
+        private DevExpress.XtraEditors.TextEdit txtFaturaNo;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraEditors.ComboBoxEdit txtStokKodu;
+        private DevExpress.XtraEditors.ComboBoxEdit txtFaturaTuru;
         private DevExpress.XtraEditors.DateEdit txtStokBarkod;
     }
 }

@@ -263,6 +263,14 @@ namespace Otomasyon.Fonksiyonlar
 				return this.GetTable<TBL_IRSALIYELER>();
 			}
 		}
+		
+		public System.Data.Linq.Table<VW_KALEMLER> VW_KALEMLER
+		{
+			get
+			{
+				return this.GetTable<VW_KALEMLER>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_BANKAHAREKETLERI")]
@@ -6313,6 +6321,231 @@ namespace Otomasyon.Fonksiyonlar
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_KALEMLER")]
+	public partial class VW_KALEMLER
+	{
+		
+		private int _ID;
+		
+		private System.Nullable<int> _STOKID;
+		
+		private System.Nullable<int> _FATURAID;
+		
+		private System.Nullable<int> _IRSALIYEID;
+		
+		private string _STOKKODU;
+		
+		private string _STOKADI;
+		
+		private string _STOKBARKOD;
+		
+		private string _STOKBIRIM;
+		
+		private System.Nullable<decimal> _BIRIMFIYAT;
+		
+		private System.Nullable<decimal> _KDV;
+		
+		private System.Nullable<int> _MIKTAR;
+		
+		private System.Nullable<decimal> _TOPLAM;
+		
+		public VW_KALEMLER()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOKID", DbType="Int")]
+		public System.Nullable<int> STOKID
+		{
+			get
+			{
+				return this._STOKID;
+			}
+			set
+			{
+				if ((this._STOKID != value))
+				{
+					this._STOKID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FATURAID", DbType="Int")]
+		public System.Nullable<int> FATURAID
+		{
+			get
+			{
+				return this._FATURAID;
+			}
+			set
+			{
+				if ((this._FATURAID != value))
+				{
+					this._FATURAID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IRSALIYEID", DbType="Int")]
+		public System.Nullable<int> IRSALIYEID
+		{
+			get
+			{
+				return this._IRSALIYEID;
+			}
+			set
+			{
+				if ((this._IRSALIYEID != value))
+				{
+					this._IRSALIYEID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOKKODU", DbType="NVarChar(20)")]
+		public string STOKKODU
+		{
+			get
+			{
+				return this._STOKKODU;
+			}
+			set
+			{
+				if ((this._STOKKODU != value))
+				{
+					this._STOKKODU = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOKADI", DbType="NVarChar(50)")]
+		public string STOKADI
+		{
+			get
+			{
+				return this._STOKADI;
+			}
+			set
+			{
+				if ((this._STOKADI != value))
+				{
+					this._STOKADI = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOKBARKOD", DbType="NVarChar(30)")]
+		public string STOKBARKOD
+		{
+			get
+			{
+				return this._STOKBARKOD;
+			}
+			set
+			{
+				if ((this._STOKBARKOD != value))
+				{
+					this._STOKBARKOD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOKBIRIM", DbType="NChar(10)")]
+		public string STOKBIRIM
+		{
+			get
+			{
+				return this._STOKBIRIM;
+			}
+			set
+			{
+				if ((this._STOKBIRIM != value))
+				{
+					this._STOKBIRIM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BIRIMFIYAT", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> BIRIMFIYAT
+		{
+			get
+			{
+				return this._BIRIMFIYAT;
+			}
+			set
+			{
+				if ((this._BIRIMFIYAT != value))
+				{
+					this._BIRIMFIYAT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KDV", DbType="Decimal(8,2)")]
+		public System.Nullable<decimal> KDV
+		{
+			get
+			{
+				return this._KDV;
+			}
+			set
+			{
+				if ((this._KDV != value))
+				{
+					this._KDV = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MIKTAR", DbType="Int")]
+		public System.Nullable<int> MIKTAR
+		{
+			get
+			{
+				return this._MIKTAR;
+			}
+			set
+			{
+				if ((this._MIKTAR != value))
+				{
+					this._MIKTAR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOPLAM", DbType="Decimal(29,2)")]
+		public System.Nullable<decimal> TOPLAM
+		{
+			get
+			{
+				return this._TOPLAM;
+			}
+			set
+			{
+				if ((this._TOPLAM != value))
+				{
+					this._TOPLAM = value;
+				}
 			}
 		}
 	}

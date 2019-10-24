@@ -223,15 +223,23 @@
         }
         #endregion
 
-        public void Fatura(bool Ac = false, int ID = -1)
+        public void Fatura(bool Ac = false, int ID = -1, bool Irsaliye = false)
         {
-            Modul_Fatura.frmSatisFaturasi frm;
-
-            if (Ac) frm = new Modul_Fatura.frmSatisFaturasi(Ac, ID);
-            else frm = new Modul_Fatura.frmSatisFaturasi();
+            Modul_Fatura.frmSatisFaturasi frm = new Modul_Fatura.frmSatisFaturasi(Ac, ID, Irsaliye);
 
             frm.MdiParent = AnaForm.ActiveForm;
             frm.Show();
+        }
+
+        public void FaturaListesi(bool Secim = false)
+        {
+            Modul_Fatura.frmFaturaListesi frm = new Modul_Fatura.frmFaturaListesi(Secim);
+            if (Secim) frm.ShowDialog(); // Seçim true ise
+            else
+            {
+                frm.MdiParent = AnaForm.ActiveForm;
+                frm.Show();
+            }
         }
     }
 }

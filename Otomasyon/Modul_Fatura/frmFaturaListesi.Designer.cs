@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -46,6 +47,8 @@
             this.txtStokBarkod = new DevExpress.XtraEditors.DateEdit();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.SagTik = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.SagTikYenile = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Liste)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFaturaNo.Properties)).BeginInit();
@@ -57,6 +60,7 @@
             this.xtraTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            this.SagTik.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitterControl1
@@ -138,6 +142,7 @@
             // 
             // Liste
             // 
+            this.Liste.ContextMenuStrip = this.SagTik;
             this.Liste.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Liste.Location = new System.Drawing.Point(5, 0);
             this.Liste.MainView = this.gridView1;
@@ -255,6 +260,20 @@
             this.splitContainerControl1.SplitterPosition = 197;
             this.splitContainerControl1.TabIndex = 1;
             // 
+            // SagTik
+            // 
+            this.SagTik.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SagTikYenile});
+            this.SagTik.Name = "SagTik";
+            this.SagTik.Size = new System.Drawing.Size(106, 26);
+            // 
+            // SagTikYenile
+            // 
+            this.SagTikYenile.Name = "SagTikYenile";
+            this.SagTikYenile.Size = new System.Drawing.Size(180, 22);
+            this.SagTikYenile.Text = "Yenile";
+            this.SagTikYenile.Click += new System.EventHandler(this.SagTikYenile_Click);
+            // 
             // frmFaturaListesi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,7 +281,8 @@
             this.ClientSize = new System.Drawing.Size(927, 609);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "frmFaturaListesi";
-            this.Text = "frmFaturaListesi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Fatura Listesi";
             this.Load += new System.EventHandler(this.FrmFaturaListesi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Liste)).EndInit();
@@ -276,6 +296,7 @@
             this.xtraTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            this.SagTik.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -300,5 +321,7 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.ComboBoxEdit txtFaturaTuru;
         private DevExpress.XtraEditors.DateEdit txtStokBarkod;
+        private System.Windows.Forms.ContextMenuStrip SagTik;
+        private System.Windows.Forms.ToolStripMenuItem SagTikYenile;
     }
 }

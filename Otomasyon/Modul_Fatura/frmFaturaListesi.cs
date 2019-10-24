@@ -45,5 +45,10 @@ namespace Otomasyon.Modul_Fatura
                 Formlar.Fatura(true, ID, false);//Aktarma yaptık
             }
         }
+
+        private void SagTikYenile_Click(object sender, System.EventArgs e)
+        {
+            Listele();
+        }
     }
 }

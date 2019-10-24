@@ -322,6 +322,7 @@
             this.txtOdemeYeri.Size = new System.Drawing.Size(116, 20);
             this.txtOdemeYeri.TabIndex = 17;
             this.txtOdemeYeri.SelectedIndexChanged += new System.EventHandler(this.TxtOdemeYeri_SelectedIndexChanged);
+            this.txtOdemeYeri.EnabledChanged += new System.EventHandler(this.TxtOdemeYeri_EnabledChanged);
             // 
             // panelControl2
             // 

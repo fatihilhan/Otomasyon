@@ -44,9 +44,9 @@ namespace Otomasyon.Modul_Fatura
             txtKDV.Text = "0.00";
             txtOdemeYeri.SelectedIndex = 0;
             AnaForm.Aktarma = -1;
-            for (int i = 0; i < gridView1.RowCount + 1; i++)
+            for (int i = gridView1.RowCount; i > -1 + 1; i--)
             {
-                gridView1.DeleteRow(0);
+                gridView1.DeleteRow(i);
             }
         }
 
@@ -55,6 +55,7 @@ namespace Otomasyon.Modul_Fatura
             try
             {
                 Fonksiyonlar.TBL_FATURALAR Fatura = DB.TBL_FATURALAR.First(s => s.ID == FaturaID);
+                IrsaliyeID = Fatura.IRSALIYEID.Value;
                 txtAciklama.Text = Fatura.ACIKLAMA;
                 txtFaturaNo.Text = Fatura.FATURANO;
                 if (Fatura.ODEMEYERIID > 0) //Kapalı fatura ise
@@ -86,7 +87,7 @@ namespace Otomasyon.Modul_Fatura
                 var srg = from s in DB.VW_KALEMLER
                           where s.FATURAID == FaturaID
                           select s;
-                foreach(Fonksiyonlar.VW_KALEMLER k in srg)
+                foreach (Fonksiyonlar.VW_KALEMLER k in srg)
                 {
                     gridView1.AddNewRow();
                     gridView1.SetFocusedRowCellValue("MIKTAR", k.MIKTAR);
@@ -239,8 +240,16 @@ namespace Otomasyon.Modul_Fatura
 
         private void TxtFaturaTuru_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (txtFaturaTuru.SelectedIndex == 0) pnlOdemeYerleri.Enabled = false;
-            if (txtFaturaTuru.SelectedIndex == 1) pnlOdemeYerleri.Enabled = true;
+            if (txtFaturaTuru.SelectedIndex == 0)
+            {
+                pnlOdemeYerleri.Enabled = false;
+                txtOdemeYeri.Enabled = false;
+            }
+            if (txtFaturaTuru.SelectedIndex == 1)
+            {
+                pnlOdemeYerleri.Enabled = true;
+                txtOdemeYeri.Enabled = true;
+            }
         }
 
         private void TxtOdemeYeri_SelectedIndexChanged(object sender, EventArgs e)
@@ -251,6 +260,7 @@ namespace Otomasyon.Modul_Fatura
                 txtHesapNo.Enabled = false;
                 txtKasaAdi.Enabled = true;
                 txtKasaKodu.Enabled = true;
+                OdemeYeri = txtOdemeYeri.Text;
             }
             if (txtOdemeYeri.SelectedIndex == 1)
             {
@@ -258,6 +268,7 @@ namespace Otomasyon.Modul_Fatura
                 txtHesapNo.Enabled = true;
                 txtKasaAdi.Enabled = false;
                 txtKasaKodu.Enabled = false;
+                OdemeYeri = txtOdemeYeri.Text;
             }
         }
 
@@ -270,7 +281,7 @@ namespace Otomasyon.Modul_Fatura
         {
             try
             {
-                Fonksiyonlar.TBL_FATURALAR Fatura = new Fonksiyonlar.TBL_FATURALAR();
+                Fonksiyonlar.TBL_FATURALAR Fatura = new Fonksiyonlar.TBL_FATURALAR(); //Yeni fatura oluşturuyoruz.
                 Fatura.ACIKLAMA = txtAciklama.Text;
                 Fatura.CARIKODU = txtCariKodu.Text;
                 Fatura.FATURANO = txtFaturaNo.Text;
@@ -349,9 +360,87 @@ namespace Otomasyon.Modul_Fatura
             }
         }
 
+        void FaturaGuncelle()
+        {
+            try
+            {
+                Fonksiyonlar.TBL_FATURALAR Fatura = DB.TBL_FATURALAR.First(s => s.ID == FaturaID); // Faturamızı getiriyoruz
+                Fatura.FATURANO = txtFaturaNo.Text;
+                Fatura.ACIKLAMA = txtAciklama.Text;
+                Fatura.CARIKODU = txtCariKodu.Text;
+                Fatura.GENELTOPLAM = decimal.Parse(txtGenelToplam.Text);
+                Fatura.ODEMEYERI = OdemeYeri;
+                Fatura.ODEMEYERIID = OdemeID;
+                Fatura.EDITDATE = DateTime.Now;
+                Fatura.EDITUSER = AnaForm.UserID;
+                DB.SubmitChanges();
+
+                Fonksiyonlar.TBL_IRSALIYELER Irsaliye = DB.TBL_IRSALIYELER.First(s => s.ID == IrsaliyeID); // İrsaliyemizi getiriyoruz.
+                Irsaliye.IRSALIYENO = txtIrsaliyeNo.Text;
+                Irsaliye.TARIHI = DateTime.Parse(txtIrsaliyeTarihi.Text);
+                Irsaliye.EDITDATE = DateTime.Now;
+                Irsaliye.EDITUSER = AnaForm.UserID;
+
+                DB.TBL_STOKHAREKETLERI.DeleteAllOnSubmit(DB.TBL_STOKHAREKETLERI.Where(s => s.FATURAID == FaturaID));//Faturaya ait stok hareketlerini tamamen siliyoruz.
+                DB.SubmitChanges();
+
+                Fonksiyonlar.TBL_STOKHAREKETLERI[] StokHareketi = new Fonksiyonlar.TBL_STOKHAREKETLERI[gridView1.RowCount]; // Faturanın kalemlerini tek tek stok hareketlerine işliyoruz.
+                for (int i = 0; i < gridView1.RowCount; i++)
+                {
+                    StokHareketi[i] = new Fonksiyonlar.TBL_STOKHAREKETLERI();
+                    StokHareketi[i].FATURAID = FaturaID;
+                    StokHareketi[i].BIRIMFIYAT = decimal.Parse(gridView1.GetRowCellValue(i, "BIRIMFIYAT").ToString());
+                    StokHareketi[i].GCKODU = "C";
+                    StokHareketi[i].IRSALIYEID = IrsaliyeID;
+                    StokHareketi[i].KDV = decimal.Parse(gridView1.GetRowCellValue(i, "KDV").ToString());
+                    StokHareketi[i].MIKTAR = int.Parse(gridView1.GetRowCellValue(i, "MIKTAR").ToString());
+                    StokHareketi[i].STOKKODU = gridView1.GetRowCellValue(i, "STOKKODU").ToString();
+                    StokHareketi[i].TIPI = "Satış Faturası";
+                    StokHareketi[i].SAVEDATE = DateTime.Now;
+                    StokHareketi[i].SAVEUSER = AnaForm.UserID;
+                    DB.TBL_STOKHAREKETLERI.InsertOnSubmit(StokHareketi[i]);
+                }
+                DB.SubmitChanges();
+
+                Fonksiyonlar.TBL_CARIHAREKETLERI CariHareket = DB.TBL_CARIHAREKETLERI.First(s => s.EVRAKTURU == "Satış Faturası" && s.EVRAKID == FaturaID);
+                if (txtFaturaTuru.SelectedIndex == 0) // Açık fatura ise
+                {
+                    CariHareket.ALACAK = 0;
+                    CariHareket.BORC = decimal.Parse(txtGenelToplam.Text);
+                }
+                else if (txtFaturaTuru.SelectedIndex == 1) // Kapalı fatura ise
+                {
+                    CariHareket.BORC = decimal.Parse(txtGenelToplam.Text);
+                    CariHareket.ALACAK = decimal.Parse(txtGenelToplam.Text);
+                }
+                CariHareket.EDITDATE = DateTime.Now;
+                CariHareket.EDITUSER = AnaForm.UserID;
+                DB.SubmitChanges();
+                Mesajlar.Guncelle(true);
+                Temizle();
+            }
+            catch (Exception ex)
+            {
+                Mesajlar.Hata(ex);
+            }
+        }
+
         private void BtnKaydet_Click(object sender, EventArgs e)
         {
-            YeniFaturaKaydet();
+            if (Edit && FaturaID > 0) FaturaGuncelle();
+            else YeniFaturaKaydet();
+        }
+
+        private void TxtOdemeYeri_EnabledChanged(object sender, EventArgs e)
+        {
+            if (txtOdemeYeri.Enabled)
+            {
+                OdemeYeri = txtOdemeYeri.Text;
+            }
+            else if (!txtOdemeYeri.Enabled)
+            {
+                OdemeYeri = "";
+            }
         }
     }
 }

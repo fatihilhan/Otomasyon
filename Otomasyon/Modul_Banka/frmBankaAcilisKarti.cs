@@ -16,6 +16,10 @@ namespace Otomasyon.Modul_Banka
         public frmBankaAcilisKarti()
         {
             InitializeComponent();
+            if (AnaForm.Kullanici.KODU == "Normal")
+            {
+                btnSil.Enabled = false;
+            }
         }
 
         private void FrmBankaAcilisKarti_Load(object sender, EventArgs e)

@@ -244,3 +244,5 @@ C:\Users\FATIH\source\repos\Otomasyon\Otomasyon\obj\Debug\Otomasyon.csproj.CopyC
 C:\Users\FATIH\source\repos\Otomasyon\Otomasyon\obj\Debug\Otomasyon.exe
 C:\Users\FATIH\source\repos\Otomasyon\Otomasyon\obj\Debug\Otomasyon.pdb
 C:\Users\FATIH\source\repos\Otomasyon\Otomasyon\obj\Debug\Otomasyon.csprojAssemblyReference.cache
+C:\Users\FATIH\source\repos\Otomasyon\Otomasyon\obj\Debug\Otomasyon.Modul_Kullanici.frmKullaniciPanel.resources
+C:\Users\FATIH\source\repos\Otomasyon\Otomasyon\obj\Debug\Otomasyon.Modul_Kullanici.frmKullaniciYonetimi.resources

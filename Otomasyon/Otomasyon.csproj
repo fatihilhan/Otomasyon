@@ -208,6 +208,18 @@
     <Compile Include="Modul_Kasa\frmKasaTahsilatOdeme.Designer.cs">
       <DependentUpon>frmKasaTahsilatOdeme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modul_Kullanici\frmKullaniciPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modul_Kullanici\frmKullaniciPanel.Designer.cs">
+      <DependentUpon>frmKullaniciPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modul_Kullanici\frmKullaniciYonetimi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modul_Kullanici\frmKullaniciYonetimi.Designer.cs">
+      <DependentUpon>frmKullaniciYonetimi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modul_Stok\frmStokGruplari.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +323,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modul_Kasa\frmKasaTahsilatOdeme.resx">
       <DependentUpon>frmKasaTahsilatOdeme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modul_Kullanici\frmKullaniciPanel.resx">
+      <DependentUpon>frmKullaniciPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modul_Kullanici\frmKullaniciYonetimi.resx">
+      <DependentUpon>frmKullaniciYonetimi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modul_Stok\frmStokGruplari.resx">
       <DependentUpon>frmStokGruplari.cs</DependentUpon>

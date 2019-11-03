@@ -60,6 +60,7 @@
             this.barBtnBankayaCekCikisi = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnCariyeCekCikis = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnCekListesi = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnKullanici = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -107,6 +108,8 @@
             this.navBtnSatisIrsaliyesi = new DevExpress.XtraNavBar.NavBarItem();
             this.navBtnAlisIrsaliyesi = new DevExpress.XtraNavBar.NavBarItem();
             this.ALC = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.txtAltKullanici = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -146,9 +149,12 @@
             this.barBtnKendiCekimiz,
             this.barBtnBankayaCekCikisi,
             this.barBtnCariyeCekCikis,
-            this.barBtnCekListesi});
+            this.barBtnCekListesi,
+            this.barBtnKullanici,
+            this.barButtonItem1,
+            this.txtAltKullanici});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 34;
+            this.ribbon.MaxItemId = 37;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -157,6 +163,7 @@
             this.ribbonPage4,
             this.ribbonPage5,
             this.ribbonPage6});
+            this.ribbon.QuickToolbarItemLinks.Add(this.barBtnKullanici);
             this.ribbon.Size = new System.Drawing.Size(896, 143);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
@@ -401,6 +408,13 @@
             this.barBtnCekListesi.Name = "barBtnCekListesi";
             this.barBtnCekListesi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarBtnCekListesi_ItemClick);
             // 
+            // barBtnKullanici
+            // 
+            this.barBtnKullanici.Caption = "barButtonItem1";
+            this.barBtnKullanici.Id = 34;
+            this.barBtnKullanici.Name = "barBtnKullanici";
+            this.barBtnKullanici.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarBtnKullanici_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -510,6 +524,8 @@
             // 
             // ribbonStatusBar
             // 
+            this.ribbonStatusBar.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonStatusBar.ItemLinks.Add(this.txtAltKullanici);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 495);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
@@ -780,6 +796,17 @@
             this.navBtnAlisIrsaliyesi.Caption = "Alış İrsaliyesi";
             this.navBtnAlisIrsaliyesi.Name = "navBtnAlisIrsaliyesi";
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Kullanıcı :";
+            this.barButtonItem1.Id = 35;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // txtAltKullanici
+            // 
+            this.txtAltKullanici.Id = 36;
+            this.txtAltKullanici.Name = "txtAltKullanici";
+            // 
             // AnaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -792,7 +819,7 @@
             this.IsMdiContainer = true;
             this.Name = "AnaForm";
             this.Ribbon = this.ribbon;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "Otomasyon";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -884,5 +911,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage6;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem barBtnCekListesi;
+        private DevExpress.XtraBars.BarButtonItem barBtnKullanici;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem txtAltKullanici;
     }
 }

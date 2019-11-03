@@ -128,5 +128,11 @@
         <elementListCompartment Id="50bb2991-1a0f-42d8-8331-8659aa86cb7e" absoluteBounds="1.0149999999999997, 5.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="90449c03-8052-4229-949a-7d2b99deeb50" isExpanded="false" absoluteBounds="5.625, 4.75, 2, 0.45">
+      <DataClassMoniker Name="/DatabaseDataContext/TBL_KULLANICILAR" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82ec915b-f0c1-4468-bb9a-3a121633e3b1" absoluteBounds="5.64, 5.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

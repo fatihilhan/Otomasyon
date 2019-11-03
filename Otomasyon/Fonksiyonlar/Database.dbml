@@ -336,4 +336,18 @@
       <Column Name="TOPLAM" Type="System.Decimal" DbType="Decimal(29,2)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TBL_KULLANICILAR" Member="TBL_KULLANICILAR">
+    <Type Name="TBL_KULLANICILAR">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="KULLANICI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SIFRE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ISIM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SOYISIM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AKTIF" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KODU" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SAVEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EDITDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LASTLOGIN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

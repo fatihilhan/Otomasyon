@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(237, 130);
+            this.ClientSize = new System.Drawing.Size(233, 126);
             this.ControlBox = false;
             this.Controls.Add(this.btnAyar);
             this.Controls.Add(this.btnGiris);
@@ -102,6 +102,7 @@
             this.Name = "frmLoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.FrmLoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtKullanici.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSifre.Properties)).EndInit();
             this.ResumeLayout(false);

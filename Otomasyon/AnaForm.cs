@@ -7,11 +7,23 @@ namespace Otomasyon
     {
         Fonksiyonlar.Formlar Formlar = new Fonksiyonlar.Formlar();
 
+        public static Fonksiyonlar.TBL_KULLANICILAR Kullanici;
         public static int UserID = -1;
         public static int Aktarma = -1; // Formlar arası geçişler için aktarma değişkeni oluşturduk.
         public AnaForm()
         {
             InitializeComponent();
+        }
+        public AnaForm(Fonksiyonlar.TBL_KULLANICILAR GelenKullanici)
+        {
+            InitializeComponent();
+            Kullanici = GelenKullanici;
+            UserID = Kullanici.ID;
+            txtAltKullanici.Caption = Kullanici.KULLANICI;
+            if(Kullanici.KODU=="Normal")
+            {
+                barBtnKullanici.Visibility = BarItemVisibility.Never;
+            }
         }
 
         public void Mesaj(string Baslik, string Mesaj)
@@ -252,6 +264,11 @@ namespace Otomasyon
         private void BarBtnSatisIadeFaturasi_ItemClick(object sender, ItemClickEventArgs e)
         {
             Formlar.FaturaListesi();
+        }
+
+        private void BarBtnKullanici_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Formlar.KullaniciYonetimi();
         }
     }
 }

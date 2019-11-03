@@ -241,5 +241,17 @@
                 frm.Show();
             }
         }
+
+        public void KullaniciYonetimi()
+        {
+            Modul_Kullanici.frmKullaniciYonetimi frm = new Modul_Kullanici.frmKullaniciYonetimi();
+            frm.ShowDialog();
+        }
+
+        public void KullaniciPaneli(bool Ac = false, int ID = -1)
+        {
+            Modul_Kullanici.frmKullaniciPanel frm = new Modul_Kullanici.frmKullaniciPanel(ID, Ac);
+            frm.ShowDialog();
+        }
     }
 }
